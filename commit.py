@@ -2,8 +2,14 @@ import subprocess
 import sys
 import os
 
+from datetime import datetime
 
-msg = input('Type the commit message (+ ENTER):')
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+# join two strings
+msg = " ".join(["Auto commit", timestamp])
+
 repo_directory = os.getcwd()
 
 subprocess.run(["git", "add", "."], cwd=repo_directory)
