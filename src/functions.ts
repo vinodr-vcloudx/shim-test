@@ -6,6 +6,17 @@ import { ConstraintsProps } from "./types.js"
 
 
 export function connect(authToken: string, { audio, video }: ConstraintsProps) {
-    // EnxRtc.joinRoom();
+    var initOpt = { "token": "XXX" };
+    var room = EnxRtc.EnxRoom(initOpt); // Initiates Room
+
+    var reConnectOpt = {
+        "allow_reconnect": true,
+        "number_of_attempts": 3,
+        "timeout_interval": 10000
+    };
+
+    room.connect(reConnectOpt);
+
+
     console.log('connected..')
 }
